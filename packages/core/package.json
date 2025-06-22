@@ -1,0 +1,11 @@
+{
+    "name": "@shiki-ui/core",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "lit": "3.3.0"
+    }
+}

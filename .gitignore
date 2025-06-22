@@ -1,6 +1,11 @@
 /node_modules
 
-package.lock.json
+package-lock.json
 pnpm-lock.yaml
 yarn.lock
 bun.lock
+
+build-storybook.log
+
+*storybook.log
+storybook-static

@@ -1,12 +1,10 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import Button from './Button.svelte';
-	import type { ButtonProps } from '../../../core/props/button.js';
+	import Button from '../../lib/components/Button.svelte';
 	import { fn } from 'storybook/test';
-	import type { Meta } from 'storybook/internal/csf';
 
 	const { Story } = defineMeta({
-		title: 'Components/Button',
+		title: 'Components/Button/Flat Design',
 		component: Button,
 		tags: ['autodocs'],
 		argTypes: {

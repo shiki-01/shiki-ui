@@ -1,0 +1,44 @@
+:root {
+    --neumorphism-bg: #e0e0e0;
+    --neumorphism-color: #333;
+}
+
+.btn[data-design='neumorpism'] {
+    color: var(--neumorphism-color);
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+}
+
+.btn[data-design='neumorpism']:hover {
+    box-shadow: 15px 15px 45px #bebebe, -15px -15px 45px #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn[data-design='neumorpism']:active {
+    box-shadow: inset 10px 10px 30px #bebebe, inset -10px -10px 30px #ffffff;
+    transform: translateY(0);
+}
+
+/* 角丸バリアント - neumorpismデザイン専用 */
+.btn[data-design='neumorpism'][data-rounded='none'] {
+    border-radius: 0;
+}
+
+.btn[data-design='neumorpism'][data-rounded='small'] {
+    border-radius: 0.25rem;
+}
+
+.btn[data-design='neumorpism'][data-rounded='medium'] {
+    border-radius: 0.5rem;
+}
+
+.btn[data-design='neumorpism'][data-rounded='large'] {
+    border-radius: 1rem;
+}
+
+.btn[data-design='neumorpism'][data-rounded='full'] {
+    border-radius: 9999px;
+}

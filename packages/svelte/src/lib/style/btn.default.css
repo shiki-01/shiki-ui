@@ -1,0 +1,60 @@
+.btn {
+    cursor: pointer;
+    font-size: 1rem;
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+    padding: 0.5em 1em; /* デフォルトパディング */
+    border: none;
+    border-radius: 0.25rem; /* デフォルト角丸 */
+
+    /* デフォルトスタイル */
+    background-color: var(--btn-bg, #6c757d);
+    color: white;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: var(--btn-bg-hover, #5a6268);
+}
+
+/* サイズバリアント */
+.btn[data-size='small'] {
+    padding: 0.25em 0.5em;
+    font-size: 0.875rem;
+}
+
+.btn[data-size='medium'] {
+    padding: 0.5em 1em;
+    font-size: 1rem;
+}
+
+.btn[data-size='large'] {
+    padding: 0.75em 1.5em;
+    font-size: 1.125rem;
+}
+
+/* 汎用的な角丸バリアント（デザイン固有のものより低い優先度） */
+.btn[data-rounded='none'] {
+    border-radius: 0;
+}
+
+.btn[data-rounded='small'] {
+    border-radius: 0.25rem;
+}
+
+.btn[data-rounded='medium'] {
+    border-radius: 0.5rem;
+}
+
+.btn[data-rounded='large'] {
+    border-radius: 1rem;
+}
+
+.btn[data-rounded='full'] {
+    border-radius: 9999px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

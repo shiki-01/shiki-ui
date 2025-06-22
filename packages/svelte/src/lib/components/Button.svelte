@@ -1,63 +1,50 @@
 <script lang="ts">
-    import '../style/flat.css';
+	import type { ButtonProps } from '../../../../core/props/button';
 
-    type Design = "flat" | "neumorpism" | "glass" | "retro" | "minimal" | "3d" | "neon" | "border";
+	const {
+		design = 'flat',
+		size = 'medium',
+		mode = 'primary',
+		color = 'blue',
+		type = 'button',
+		rounded = 'none',
+		disabled = false,
+		class: className = '',
+		style = '',
+		label,
+		onclick = () => {}
+	}: ButtonProps = $props();
 
-    type ButtonProps = {
-        design?: Design;
-        size?: "small" | "medium" | "large";
-        mode?: "primary" | "secondary" | "success" | "danger" | "warning" | "info" | "light" | "dark";
-        color?: "blue" | "red" | "green" | "yellow" | "purple" | "orange" | "pink" | "teal";
-        rounded?: "none" | "small" | "medium" | "large" | "full";
-        type?: "button" | "submit" | "reset";
-        disabled?: boolean;
-        class?: string;
-        onClick?: () => void;
-        children?: () => any;
-    };
+	let cssVars: string = $state('');
 
-    let {
-        design = "flat",
-        size = "medium",
-        mode = "primary",
-        color = "blue",
-        type = "button",
-        rounded = "none",
-        disabled = false,
-        class: className = "",
-        onClick = () => {},
-        children
-    }: ButtonProps = $props();
+	$effect(() => {
+        if (mode === 'success' || mode === 'danger' || mode === 'warning' || mode === 'info') {
+            cssVars = `--btn-bg: var(--${design}-color-${mode}); --btn-bg-hover: var(--${design}-color-${mode}-hover);`;
+        } else if (color === 'black' || color === 'white') {
+            cssVars = `--btn-bg: var(--${design}-color-${color}); --btn-bg-hover: var(--${design}-color-${color}-hover);`;
+        } else {
+            cssVars = `--btn-bg: var(--${design}-color-${color}-${mode === 'secondary' ? 'secondary' : 'primary'}); --btn-bg-hover: var(--${design}-color-${color}-${mode === 'secondary' ? 'tertiary' : 'secondary'});`;
+        }
+    });
 </script>
 
 <button
-    type={type}
-    disabled={disabled}
-    class={`btn ${className}`}
-    data-design={design}
-    data-size={size}
-    data-mode={mode}
-    data-color={color}
-    onclick={onClick}
+	{type}
+	{disabled}
+	class={`btn ${className}`}
+	style={`${cssVars} ${style}`}
+	data-design={design}
+	data-size={size}
+	data-mode={mode}
+	data-color={color}
+	data-rounded={rounded}
+	{onclick}
 >
-    {@render children?.()}
+	{label}
 </button>
 
 <style>
-    .btn {
-        padding: 0.5em 1em;
-        border: none;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .btn[data-design="flat"] {
-        background-color: var(--color-flat-bg, #f0f0f0);
-        color: var(--color-flat-text, #333);
-    }
-
-    .btn[data-design="flat"]:hover {
-        background-color: var(--color-flat-hover-bg, #e0e0e0);
-    }
+    @import '../style/btn.default.css';
+    @import '../style/flat.css';
+    @import '../style/neumorpism.css';
 </style>
