@@ -1,6 +1,6 @@
-import { Design } from "../types";
+import type { Design } from "../types";
 
-interface ButtonProps {
+interface ButtonProps<T> {
   /** デザインテーマを選択 */
   design?: Design;
   /** ボタンのサイズ */
@@ -32,8 +32,10 @@ interface ButtonProps {
   style?: string;
   /** ボタンのテキスト */
   label: string;
+  /** 子要素 */
+  children?: T;
   /** クリックイベントハンドラー */
   onclick?: () => void;
 }
 
-export { ButtonProps };
+export type { ButtonProps };

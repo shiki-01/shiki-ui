@@ -1,0 +1,61 @@
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-color: #333;
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+    --glass-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --glass-hover-bg: rgba(255, 255, 255, 0.9);
+    --glass-hover-color: #222;
+    --glass-active-bg: rgba(255, 255, 255, 0.95);
+    --glass-active-color: #111;
+    --glass-disabled-bg: rgba(255, 255, 255, 0.5);
+    --glass-disabled-color: #aaa;
+}
+
+.btn[data-design='glass'] {
+    background: var(--glass-bg);
+    color: var(--glass-color);
+    border: var(--glass-border);
+    box-shadow: var(--glass-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(20px);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn[data-design='glass']:hover {
+    background: var(--glass-hover-bg);
+    color: var(--glass-hover-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn[data-design='glass']:active {
+    background: var(--glass-active-bg);
+    color: var(--glass-active-color);
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn[data-design='glass']:disabled {
+    background: var(--glass-disabled-bg);
+    color: var(--glass-disabled-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn[data-design='glass'][data-rounded='none'] {
+    border-radius: 0;
+}
+
+.btn[data-design='glass'][data-rounded='small'] {
+    border-radius: 0.25rem;
+}
+
+.btn[data-design='glass'][data-rounded='medium'] {
+    border-radius: 0.5rem;
+}
+
+.btn[data-design='glass'][data-rounded='large'] {
+    border-radius: 1rem;
+}
+
+.btn[data-design='glass'][data-rounded='full'] {
+    border-radius: 9999px;
+}

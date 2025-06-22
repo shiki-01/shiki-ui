@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import type { ButtonProps } from '../../../../core/props/button';
 
 	const {
@@ -11,21 +12,22 @@
 		disabled = false,
 		class: className = '',
 		style = '',
-		label,
+		label = '',
+		children,
 		onclick = () => {}
-	}: ButtonProps = $props();
+	}: ButtonProps<Snippet> = $props();
 
 	let cssVars: string = $state('');
 
 	$effect(() => {
-        if (mode === 'success' || mode === 'danger' || mode === 'warning' || mode === 'info') {
-            cssVars = `--btn-bg: var(--${design}-color-${mode}); --btn-bg-hover: var(--${design}-color-${mode}-hover);`;
-        } else if (color === 'black' || color === 'white') {
-            cssVars = `--btn-bg: var(--${design}-color-${color}); --btn-bg-hover: var(--${design}-color-${color}-hover);`;
-        } else {
-            cssVars = `--btn-bg: var(--${design}-color-${color}-${mode === 'secondary' ? 'secondary' : 'primary'}); --btn-bg-hover: var(--${design}-color-${color}-${mode === 'secondary' ? 'tertiary' : 'secondary'});`;
-        }
-    });
+		if (mode === 'success' || mode === 'danger' || mode === 'warning' || mode === 'info') {
+			cssVars = `--btn-bg: var(--${design}-color-${mode}); --btn-bg-hover: var(--${design}-color-${mode}-hover);`;
+		} else if (color === 'black' || color === 'white') {
+			cssVars = `--btn-bg: var(--${design}-color-${color}); --btn-bg-hover: var(--${design}-color-${color}-hover);`;
+		} else {
+			cssVars = `--btn-bg: var(--${design}-color-${color}-${mode === 'secondary' ? 'secondary' : 'primary'}); --btn-bg-hover: var(--${design}-color-${color}-${mode === 'secondary' ? 'tertiary' : 'secondary'});`;
+		}
+	});
 </script>
 
 <button
@@ -40,11 +42,16 @@
 	data-rounded={rounded}
 	{onclick}
 >
-	{label}
+	{#if children}
+		{@render children()}
+	{:else}
+		{label}
+	{/if}
 </button>
 
 <style>
-    @import '../style/btn.default.css';
-    @import '../style/flat.css';
-    @import '../style/neumorpism.css';
+	@import '../style/btn.default.css';
+	@import '../style/flat.css';
+	@import '../style/neumorpism.css';
+	@import '../style/glass.css';
 </style>
