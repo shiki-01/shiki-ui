@@ -2,6 +2,11 @@
 	import type { Snippet } from 'svelte';
 	import type { ButtonProps } from '../../../../core/props/button';
 
+	import '../style/btn.default.css';
+	import '../style/flat.css';
+	import '../style/neumorpism.css';
+	import '../style/glass.css';
+
 	const {
 		design = 'flat',
 		size = 'medium',
@@ -48,10 +53,3 @@
 		{label}
 	{/if}
 </button>
-
-<style>
-	@import '../style/btn.default.css';
-	@import '../style/flat.css';
-	@import '../style/neumorpism.css';
-	@import '../style/glass.css';
-</style>

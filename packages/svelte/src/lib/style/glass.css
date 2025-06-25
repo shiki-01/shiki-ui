@@ -1,5 +1,5 @@
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.5);
+    --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-color: #333;
     --glass-border: 1px solid rgba(255, 255, 255, 0.2);
     --glass-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -15,8 +15,8 @@
     background: var(--glass-bg);
     color: var(--glass-color);
     border: var(--glass-border);
-    box-shadow: var(--glass-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.1));
-    backdrop-filter: blur(20px);
+    box-shadow: var(--glass-box-shadow, 0 4px 8px rgba(0, 0, 0, 0.5));
+    backdrop-filter: blur(2px);
     border-radius: 0.5rem;
     transition: all 0.3s ease;
 }
